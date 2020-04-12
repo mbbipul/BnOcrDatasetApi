@@ -74,6 +74,12 @@ namespace restApiDataset.Controllers
             await repository.AddOcrClasses(ocrClasses);
             return CreatedAtAction("GetOcrClasses", new { count = ocrClasses.Count }, ocrClasses);
         }
+        [HttpDelete("all")]
+        public async Task<ActionResult<OcrClass>> DeleteOcrClasses()
+        {
+            await repository.DeleteAllOcrClass();
+            return CreatedAtAction("GetOcrClasses", new { messgae = "Null" });
+        }
         // DELETE: api/Ocrdataset/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<OcrClass>> DeleteOcrClass(int id)

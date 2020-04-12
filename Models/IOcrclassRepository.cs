@@ -13,5 +13,6 @@ namespace restApiDataset.Models
         Task<bool> UpdateOcrClass(OcrClass ocrClass);
         Task<ActionResult<OcrClass>> GetOcrClass(long id);
         Task<OcrClass> DeleteOcrClassR(int ocrClassId);
+        Task DeleteAllOcrClass();
     }
 }

@@ -30,14 +30,13 @@ namespace restApiDataset
         {
             services.AddControllers();
             services.AddCors(options =>{
-                    options.AddPolicy(MyAllowSpecificOrigins,
-                                    builder =>
-                                    {
-                                        builder.WithOrigins("http://localhost:53608",
-                                                            "http://localhost:3000/")
-                                                            .AllowAnyHeader()
-                                                            .AllowAnyMethod();
-                                    });
+                options.AddPolicy(MyAllowSpecificOrigins,
+                    builder => {
+                        builder.WithOrigins("http://localhost:53608",
+                            "http://localhost:3000")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
             });
             services.AddDbContext<ApplicationDbContext>(opt => 
                 opt.UseSqlServer(Configuration.GetConnectionString("ocrdatasetDb")));

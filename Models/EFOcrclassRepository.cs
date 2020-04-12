@@ -50,5 +50,9 @@ namespace restApiDataset.Models
             }
             return null;
         }
+        public async Task DeleteAllOcrClass(){
+            context.OcrClasses.RemoveRange(context.OcrClasses);
+            await context.SaveChangesAsync();
+        }
     }
 }
