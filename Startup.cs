@@ -17,6 +17,7 @@ namespace restApiDataset
 {
     public class Startup
     {
+        private readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -28,6 +29,16 @@ namespace restApiDataset
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors(options =>{
+                    options.AddPolicy(MyAllowSpecificOrigins,
+                                    builder =>
+                                    {
+                                        builder.WithOrigins("http://localhost:53608",
+                                                            "http://localhost:3000/")
+                                                            .AllowAnyHeader()
+                                                            .AllowAnyMethod();
+                                    });
+            });
             services.AddDbContext<ApplicationDbContext>(opt => 
                 opt.UseSqlServer(Configuration.GetConnectionString("ocrdatasetDb")));
             services.AddTransient<IOcrclassRepository, EFOcrclassRepository>();
@@ -44,7 +55,7 @@ namespace restApiDataset
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseCors(MyAllowSpecificOrigins);
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -18,6 +19,10 @@ namespace restApiDataset.Models
 
         public async Task AddOcrClass(OcrClass ocrClass){
             context.OcrClasses.Add(ocrClass);
+            await context.SaveChangesAsync();
+        }
+        public async Task AddOcrClasses(List<OcrClass> ocrClass){
+            context.OcrClasses.AddRange(ocrClass);
             await context.SaveChangesAsync();
         }
         public async Task<bool> UpdateOcrClass(OcrClass ocrClass){

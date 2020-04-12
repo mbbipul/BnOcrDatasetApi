@@ -13,7 +13,6 @@ namespace restApiDataset.Controllers
     [ApiController]
     public class OcrdatasetController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
         private IOcrclassRepository repository;
 
         public OcrdatasetController(IOcrclassRepository rep)
@@ -68,7 +67,13 @@ namespace restApiDataset.Controllers
             await repository.AddOcrClass(ocrClass);
             return CreatedAtAction("GetOcrClass", new { id = ocrClass.Id }, ocrClass);
         }
-
+        [HttpPost("all")]
+        public async Task<ActionResult<OcrClass>> PostOcrClasses(List<OcrClass> ocrClasses)
+        {
+            Console.WriteLine(ocrClasses);
+            await repository.AddOcrClasses(ocrClasses);
+            return CreatedAtAction("GetOcrClasses", new { count = ocrClasses.Count }, ocrClasses);
+        }
         // DELETE: api/Ocrdataset/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<OcrClass>> DeleteOcrClass(int id)
