@@ -40,7 +40,22 @@ namespace restApiDataset.Controllers
 
             return await ocrClass;
         }
-
+        [HttpGet("r{grId}v{vId}c{cId}")]
+        public async Task<ActionResult<IEnumerable<OcrClass>>> GetGraphemeBygraphemesids(string grId,string vId,string cId){
+            return await repository.GetClassesByGraphemeIds(grId,vId,cId).ToListAsync();
+        } 
+        [HttpGet("r{grId}v{vId}")]
+        public async Task<ActionResult<IEnumerable<OcrClass>>> GetGraphemeBygraphemervid(string grId,string vId){
+            return await repository.GetClassesByGraphemeRVId(grId,vId).ToListAsync();
+        } 
+        [HttpGet("r{grId}c{cId}")]
+        public async Task<ActionResult<IEnumerable<OcrClass>>> GetGraphemeBygraphemercid(string grId,string cId){
+            return await repository.GetClassesByGraphemeRCId(grId,cId).ToListAsync();
+        } 
+        [HttpGet("vc{vId}/{cId}")]
+        public async Task<ActionResult<IEnumerable<OcrClass>>> GetGraphemeBygraphemevcid(string vId,string cId){
+            return await repository.GetClassesByGraphemeVCId(vId,cId).ToListAsync();
+        } 
         // PUT: api/Ocrdataset/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.

@@ -54,5 +54,21 @@ namespace restApiDataset.Models
             context.OcrClasses.RemoveRange(context.OcrClasses);
             await context.SaveChangesAsync();
         }
+        public IQueryable<OcrClass> GetClassesByGraphemeIds(string graphemeRootId,string vDiaId,string cDiaId){
+            return context.OcrClasses
+                .Where( ol => (ol.GraphemeRootId == graphemeRootId) && (ol.VowelDiacreticId == vDiaId) && (ol.ConsonantDiacreticId == cDiaId));
+        }
+        public IQueryable<OcrClass> GetClassesByGraphemeRVId(string graphemeRootId,string vDiaId){
+            return context.OcrClasses
+                .Where( ol => (ol.GraphemeRootId == graphemeRootId) && (ol.VowelDiacreticId == vDiaId));
+        }
+        public IQueryable<OcrClass> GetClassesByGraphemeRCId(string graphemeRootId,string cDiaId){
+            return context.OcrClasses
+                .Where( ol => (ol.GraphemeRootId == graphemeRootId) && (ol.ConsonantDiacreticId == cDiaId));
+        }
+        public IQueryable<OcrClass> GetClassesByGraphemeVCId(string vDiaId,string cDiaId){
+            return context.OcrClasses
+                .Where( ol => (ol.VowelDiacreticId == vDiaId) && (ol.ConsonantDiacreticId == cDiaId));
+        }
     }
 }

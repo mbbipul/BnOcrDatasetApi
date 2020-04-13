@@ -15,5 +15,9 @@ namespace restApiDataset.Models
         Task<OcrClass> DeleteOcrClassR(int ocrClassId);
         Task DeleteAllOcrClass();
         IQueryable<OcrClass> GetClassesByGraphemeIds(string graphemeRootId,string vDiaId,string cDiaId);
+        IQueryable<OcrClass> GetClassesByGraphemeRVId(string graphemeRootId,string vDiaId);
+        IQueryable<OcrClass> GetClassesByGraphemeRCId(string graphemeRootId,string cDiaId);
+        IQueryable<OcrClass> GetClassesByGraphemeVCId(string vDiaId,string cDiaId);
+
     }
 }
