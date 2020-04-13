@@ -41,6 +41,8 @@ namespace restApiDataset
             services.AddDbContext<ApplicationDbContext>(opt => 
                 opt.UseSqlServer(Configuration.GetConnectionString("ocrdatasetDb")));
             services.AddTransient<IOcrclassRepository, EFOcrclassRepository>();
+            services.AddTransient<IGraphemerootRepository, EFGraphemerootRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
