@@ -54,6 +54,10 @@ namespace restApiDataset.Models
             context.OcrClasses.RemoveRange(context.OcrClasses);
             await context.SaveChangesAsync();
         }
+        public IQueryable<OcrClass> GetClassesByFontName(string fontName){
+            return context.OcrClasses
+                .Where( oc => oc.FileName.Contains(fontName));
+        }
         public IQueryable<OcrClass> GetClassesByGraphemeIds(string graphemeRootId,string vDiaId,string cDiaId){
             return context.OcrClasses
                 .Where( ol => (ol.GraphemeRootId == graphemeRootId) && (ol.VowelDiacreticId == vDiaId) && (ol.ConsonantDiacreticId == cDiaId));

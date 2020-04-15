@@ -40,6 +40,11 @@ namespace restApiDataset.Controllers
 
             return await ocrClass;
         }
+        [HttpGet("font-{name}")]
+        public async Task<ActionResult<IEnumerable<OcrClass>>> GetOcrClassByFontName(string name)
+        {
+            return await repository.GetClassesByFontName(name).ToListAsync();
+        }
         [HttpGet("r{grId}v{vId}c{cId}")]
         public async Task<ActionResult<IEnumerable<OcrClass>>> GetGraphemeBygraphemesids(string grId,string vId,string cId){
             return await repository.GetClassesByGraphemeIds(grId,vId,cId).ToListAsync();
