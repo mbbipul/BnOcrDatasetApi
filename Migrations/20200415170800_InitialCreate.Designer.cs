@@ -9,7 +9,7 @@ using restApiDataset.Models;
 namespace restApiDataset.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200415054309_InitialCreate")]
+    [Migration("20200415170800_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

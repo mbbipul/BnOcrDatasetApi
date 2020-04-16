@@ -26,7 +26,11 @@ namespace restApiDataset.Controllers
         {
             return await repository.OcrClasses.ToListAsync();
         }
-
+        [HttpGet("ocr-count")]
+        public int GetOcrClassesCount()
+        {
+            return repository.OcrClasses.Count();
+        }
         // GET: api/Ocrdataset/5
         [HttpGet("{id}")]
         public async Task<ActionResult<OcrClass>> GetOcrClass(long id)
