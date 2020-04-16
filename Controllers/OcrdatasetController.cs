@@ -26,10 +26,15 @@ namespace restApiDataset.Controllers
         {
             return await repository.OcrClasses.ToListAsync();
         }
-        [HttpGet("ocr-count")]
-        public int GetOcrClassesCount()
+        [HttpGet("groupbyfont")]
+        public async Task<ActionResult<IEnumerable<OcrClass>>> GetOcrClassesByfontGroup()
         {
-            return repository.OcrClasses.Count();
+            return await repository.GetClassesGroupByFontName().ToListAsync();
+        }
+        [HttpGet("ocr-count")]
+        public async Task<int> GetOcrClassesCount()
+        {
+            return await repository.OcrClasses.CountAsync();
         }
         // GET: api/Ocrdataset/5
         [HttpGet("{id}")]

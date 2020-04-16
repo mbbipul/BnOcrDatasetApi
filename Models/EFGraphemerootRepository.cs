@@ -18,5 +18,16 @@ namespace restApiDataset.Models
         {
             return context.OcrClasses.Where( cl => cl.GraphemeRootId == id);
         }
+        public IQueryable<OcrClass> GetGraphemeByrootIdByName(string id,string fontName){
+            return context.OcrClasses
+                .Where( oc => (oc.GraphemeRootId == id) && (oc.FileName.Contains(fontName)));        
+        }
+            
+        public IQueryable<OcrClass> GetGraphemeByrootIdOrderByFont(IQueryable<OcrClass> ocrClasses){
+            return ocrClasses
+                .OrderBy(oc => oc.FileName);
+        }
+
     }
+
 }

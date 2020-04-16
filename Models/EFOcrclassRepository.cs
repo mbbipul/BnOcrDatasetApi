@@ -74,5 +74,10 @@ namespace restApiDataset.Models
             return context.OcrClasses
                 .Where( ol => (ol.VowelDiacreticId == vDiaId) && (ol.ConsonantDiacreticId == cDiaId));
         }
+
+        public IQueryable<OcrClass> GetClassesGroupByFontName(){
+            return context.OcrClasses.OrderBy(oc => oc.FileName);
+        }
+
     }
 }

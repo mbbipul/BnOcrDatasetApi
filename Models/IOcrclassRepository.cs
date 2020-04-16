@@ -20,5 +20,6 @@ namespace restApiDataset.Models
         IQueryable<OcrClass> GetClassesByGraphemeRCId(string graphemeRootId,string cDiaId);
         IQueryable<OcrClass> GetClassesByGraphemeVCId(string vDiaId,string cDiaId);
 
+        IQueryable<OcrClass> GetClassesGroupByFontName();
     }
 }
