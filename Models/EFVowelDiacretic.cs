@@ -4,8 +4,8 @@ namespace restApiDataset.Models
 {
     public class EFVowelDiacretic : IVowelDiacretic
     {
-        private ApplicationDbContext context;
-        public EFVowelDiacretic(ApplicationDbContext ctx){
+        private OcrDbContext context;
+        public EFVowelDiacretic(OcrDbContext ctx){
             this.context = ctx;
         }
         public IQueryable<OcrClass> GetVowelDiacretics(){

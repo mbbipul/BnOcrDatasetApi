@@ -96,11 +96,14 @@ namespace restApiDataset.Controllers
             await repository.AddOcrClass(ocrClass);
             return CreatedAtAction("GetOcrClass", new { id = ocrClass.Id }, ocrClass);
         }
+        [DisableRequestSizeLimit]
         [HttpPost("all")]
         public async Task<ActionResult<OcrClass>> PostOcrClasses(List<OcrClass> ocrClasses)
         {
-            Console.WriteLine(ocrClasses);
+            Console.WriteLine(ocrClasses.Count());
+            // This might speed up things a little aswell
             await repository.AddOcrClasses(ocrClasses);
+            Console.WriteLine("done");
             return CreatedAtAction("GetOcrClasses", new { count = ocrClasses.Count }, ocrClasses);
         }
         [HttpDelete("all")]

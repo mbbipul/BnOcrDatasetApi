@@ -1,6 +1,6 @@
 using System;
 
-namespace restApiDataset
+namespace ocrapi
 {
     public class WeatherForecast
     {

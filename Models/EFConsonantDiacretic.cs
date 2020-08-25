@@ -4,8 +4,8 @@ namespace restApiDataset.Models
 {
     public class EFConsonantDiacretic : IConsonantDiacretic
     {
-        ApplicationDbContext context;
-        public EFConsonantDiacretic(ApplicationDbContext ctx){
+        OcrDbContext context;
+        public EFConsonantDiacretic(OcrDbContext ctx){
             this.context = ctx;
         }
         public IQueryable<OcrClass> GetConsonantDiacretics(){

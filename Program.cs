@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace restApiDataset
+namespace ocrapi
 {
     public class Program
     {
@@ -20,9 +20,7 @@ namespace restApiDataset
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>()
-                    .UseDefaultServiceProvider(options =>
-                        options.ValidateScopes = false);
+                    webBuilder.UseStartup<Startup>();
                 });
     }
 }

@@ -13,11 +13,12 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using restApiDataset.Models;
 
-namespace restApiDataset
+namespace ocrapi
 {
     public class Startup
     {
         private readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -38,12 +39,14 @@ namespace restApiDataset
                         .AllowAnyMethod();
                 });
             });
-            services.AddDbContext<ApplicationDbContext>(opt => 
+            services.AddDbContext<OcrDbContext>(opt => 
                 opt.UseSqlServer(Configuration.GetConnectionString("ocrdatasetDb")));
+            
             services.AddTransient<IOcrclassRepository, EFOcrclassRepository>();
             services.AddTransient<IGraphemerootRepository, EFGraphemerootRepository>();
             services.AddTransient<IVowelDiacretic,EFVowelDiacretic>();
             services.AddTransient<IConsonantDiacretic,EFConsonantDiacretic>();
+       
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,19 +56,18 @@ namespace restApiDataset
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
-            app.UseCors(MyAllowSpecificOrigins);
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
-
-            //SeedData.EnsurePopulated(app);
         }
     }
 }

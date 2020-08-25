@@ -7,8 +7,8 @@ namespace restApiDataset.Models
 {
     public class EFOcrclassRepository : IOcrclassRepository
     {
-        private ApplicationDbContext context;   
-        public EFOcrclassRepository(ApplicationDbContext ctx){
+        private OcrDbContext context;   
+        public EFOcrclassRepository(OcrDbContext ctx){
             this.context = ctx;
         }
         public IQueryable<OcrClass> OcrClasses => context.OcrClasses;
@@ -22,8 +22,8 @@ namespace restApiDataset.Models
             await context.SaveChangesAsync();
         }
         public async Task AddOcrClasses(List<OcrClass> ocrClass){
-            context.OcrClasses.AddRange(ocrClass);
-            await context.SaveChangesAsync();
+            await context.OcrClasses.BulkInsertAsync(ocrClass);
+            await context.BulkSaveChangesAsync();
         }
         public async Task<bool> UpdateOcrClass(OcrClass ocrClass){
             OcrClass dbEntry = context.OcrClasses.
@@ -51,8 +51,8 @@ namespace restApiDataset.Models
             return null;
         }
         public async Task DeleteAllOcrClass(){
-            context.OcrClasses.RemoveRange(context.OcrClasses);
-            await context.SaveChangesAsync();
+            await context.OcrClasses.BulkDeleteAsync(context.OcrClasses);
+            await context.BulkSaveChangesAsync();
         }
         public IQueryable<OcrClass> GetClassesByFontName(string fontName){
             return context.OcrClasses

@@ -7,8 +7,8 @@ namespace restApiDataset.Models
 {
     public class EFGraphemerootRepository : IGraphemerootRepository
     {
-        private ApplicationDbContext context;   
-        public EFGraphemerootRepository(ApplicationDbContext ctx){
+        private OcrDbContext context;   
+        public EFGraphemerootRepository(OcrDbContext ctx){
             this.context = ctx;
         }
         public IQueryable<OcrClass> GetGraphemeroots(){
