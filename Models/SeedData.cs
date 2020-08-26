@@ -8,7 +8,7 @@ namespace restApiDataset.Models
     public class SeedData
     {
         public static void EnsurePopulated (IApplicationBuilder app){
-            ApplicationDbContext context = app.ApplicationServices.GetRequiredService<ApplicationDbContext>();
+            OcrDbContext context = app.ApplicationServices.GetRequiredService<OcrDbContext>();
             context.Database.Migrate();
 
             // if(!context.OcrClasses.Any()) {

@@ -104,7 +104,7 @@ namespace restApiDataset.Controllers
             // This might speed up things a little aswell
             await repository.AddOcrClasses(ocrClasses);
             Console.WriteLine("done");
-            return CreatedAtAction("GetOcrClasses", new { count = ocrClasses.Count }, ocrClasses);
+            return CreatedAtAction("GetOcrClasses", new { count = ocrClasses.Count });
         }
         [HttpDelete("all")]
         public async Task<ActionResult<OcrClass>> DeleteOcrClasses()

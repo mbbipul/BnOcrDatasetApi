@@ -1,3 +1,4 @@
+using BnOcrDatasetApi.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace restApiDataset.Models
@@ -10,5 +11,7 @@ namespace restApiDataset.Models
 
         }
         public DbSet<OcrClass> OcrClasses { get; set;}
+        public DbSet<OcrTrash> OcrTrashes { get; set;}
+
     }
 }
