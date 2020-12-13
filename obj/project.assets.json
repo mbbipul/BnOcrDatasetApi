@@ -7397,19 +7397,19 @@
     ]
   },
   "packageFolders": {
-    "/home/bb/.nuget/packages/": {}
+    "C:\\Users\\Talking Glass\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/bb/development/projects/ocr/BnOcrDatasetApi/restApiDataset.csproj",
+      "projectUniqueName": "G:\\projects_bipul\\BnOcrDatasetApi\\restApiDataset.csproj",
       "projectName": "restApiDataset",
-      "projectPath": "/home/bb/development/projects/ocr/BnOcrDatasetApi/restApiDataset.csproj",
-      "packagesPath": "/home/bb/.nuget/packages/",
-      "outputPath": "/home/bb/development/projects/ocr/BnOcrDatasetApi/obj/",
+      "projectPath": "G:\\projects_bipul\\BnOcrDatasetApi\\restApiDataset.csproj",
+      "packagesPath": "C:\\Users\\Talking Glass\\.nuget\\packages\\",
+      "outputPath": "G:\\projects_bipul\\BnOcrDatasetApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/bb/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Talking Glass\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -7472,7 +7472,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.401/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

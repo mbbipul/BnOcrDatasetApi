@@ -49,13 +49,7 @@ namespace restApiDataset.Migrations
                     b.Property<string>("FileName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("FontSize")
-                        .HasColumnType("int");
-
                     b.Property<string>("GraphemeRootId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImageData")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("VowelDiacreticId")

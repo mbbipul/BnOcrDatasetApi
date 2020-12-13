@@ -9,7 +9,7 @@ namespace restApiDataset.Models
     {
         IQueryable<OcrClass> OcrClasses { get;}
         Task AddOcrClass(OcrClass ocrClass);
-        Task AddOcrClasses(List<OcrClass> ocrClass);
+        void AddOcrClasses(List<OcrClassWithImageData> ocrClass);
         Task<bool> UpdateOcrClass(OcrClass ocrClass);
         Task<ActionResult<OcrClass>> GetOcrClass(long id);
         Task<OcrClass> DeleteOcrClassR(int ocrClassId);

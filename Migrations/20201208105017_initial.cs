@@ -2,7 +2,7 @@
 
 namespace restApiDataset.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,8 +13,6 @@ namespace restApiDataset.Migrations
                     Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FileName = table.Column<string>(nullable: true),
-                    FontSize = table.Column<int>(nullable: false),
-                    ImageData = table.Column<string>(nullable: true),
                     GraphemeRootId = table.Column<string>(nullable: true),
                     VowelDiacreticId = table.Column<string>(nullable: true),
                     ConsonantDiacreticId = table.Column<string>(nullable: true)

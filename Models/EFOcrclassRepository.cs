@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -21,16 +23,21 @@ namespace restApiDataset.Models
             context.OcrClasses.Add(ocrClass);
             await context.SaveChangesAsync();
         }
-        public async Task AddOcrClasses(List<OcrClass> ocrClass){
-            await context.OcrClasses.BulkInsertAsync(ocrClass);
-            await context.BulkSaveChangesAsync();
+        public void AddOcrClasses(List<OcrClassWithImageData> ocrClassWithImageDatas){
+
+            foreach (OcrClassWithImageData item in ocrClassWithImageDatas)
+            {
+                
+                String imgName = "F:\\BnOcrDatasets"+"\\"+item.FileName+".png";
+                byte[] imgByteArray = Convert.FromBase64String(item.ImageData.ToString().Split(",").GetValue(1).ToString());
+                File.WriteAllBytes(imgName, imgByteArray);
+            }
         }
         public async Task<bool> UpdateOcrClass(OcrClass ocrClass){
             OcrClass dbEntry = context.OcrClasses.
                 FirstOrDefault(c => c.Id == ocrClass.Id);
             if(dbEntry != null){
                 dbEntry.FileName = ocrClass.FileName;
-                dbEntry.ImageData = ocrClass.ImageData;
                 dbEntry.GraphemeRootId = ocrClass.GraphemeRootId;
                 dbEntry.VowelDiacreticId = ocrClass.VowelDiacreticId;
                 dbEntry.ConsonantDiacreticId = ocrClass.ConsonantDiacreticId;
@@ -51,8 +58,8 @@ namespace restApiDataset.Models
             return null;
         }
         public async Task DeleteAllOcrClass(){
-            await context.OcrClasses.BulkDeleteAsync(context.OcrClasses);
-            await context.BulkSaveChangesAsync();
+            context.OcrClasses.RemoveRange(context.OcrClasses);
+            await context.SaveChangesAsync();
         }
         public IQueryable<OcrClass> GetClassesByFontName(string fontName){
             return context.OcrClasses

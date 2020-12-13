@@ -10,8 +10,8 @@ using restApiDataset.Models;
 namespace restApiDataset.Migrations
 {
     [DbContext(typeof(OcrDbContext))]
-    [Migration("20200826103558_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20201208105017_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -51,13 +51,7 @@ namespace restApiDataset.Migrations
                     b.Property<string>("FileName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("FontSize")
-                        .HasColumnType("int");
-
                     b.Property<string>("GraphemeRootId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImageData")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("VowelDiacreticId")

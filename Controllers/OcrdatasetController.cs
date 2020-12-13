@@ -14,10 +14,11 @@ namespace restApiDataset.Controllers
     public class OcrdatasetController : ControllerBase
     {
         private IOcrclassRepository repository;
-
-        public OcrdatasetController(IOcrclassRepository rep)
+        private OcrDbContext context;
+        public OcrdatasetController(IOcrclassRepository rep,OcrDbContext _context)
         {
             repository = rep;
+            context = _context;
         }
 
         // GET: api/Ocrdataset
@@ -98,13 +99,13 @@ namespace restApiDataset.Controllers
         }
         [DisableRequestSizeLimit]
         [HttpPost("all")]
-        public async Task<ActionResult<OcrClass>> PostOcrClasses(List<OcrClass> ocrClasses)
+        public ActionResult<OcrClassWithImageData> PostOcrClasses(List<OcrClassWithImageData> ocrClasses)
         {
-            Console.WriteLine(ocrClasses.Count());
+            Console.WriteLine("request with ");
             // This might speed up things a little aswell
-            await repository.AddOcrClasses(ocrClasses);
-            Console.WriteLine("done");
-            return CreatedAtAction("GetOcrClasses", new { count = ocrClasses.Count });
+            repository.AddOcrClasses(ocrClasses);
+            Console.WriteLine("Succcessfuly added "+ocrClasses.Count().ToString());
+            return Ok("Successfully Added");
         }
         [HttpDelete("all")]
         public async Task<ActionResult<OcrClass>> DeleteOcrClasses()
